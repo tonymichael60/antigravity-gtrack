@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G-TRACK - Delivery Report</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <script src="theme.js"></script>
+</head>
+<body class="monitoring-page">
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="app-sidebar bg-white">
+      <div class="sidebar-logo">
+         <div class="icon-circle bg-lime text-black" style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+            <i class="ph-fill ph-briefcase"></i>
+         </div>
+         <div class="logo-text">
+            <h2>G-TRACK</h2>
+            <span>SMART MONITORING</span>
+         </div>
+      </div>
+
+      <nav class="sidebar-nav">
+         <a href="index.html" class="nav-item"><i class="ph-fill ph-squares-four"></i> Dashboard</a>
+         <a href="#" class="nav-item active bg-lime"><i class="ph ph-chart-bar"></i> Reports</a>
+         <a href="#" class="nav-item"><i class="ph ph-hard-drives"></i> Devices</a>
+         <a href="#" class="nav-item"><i class="ph ph-chart-line-up"></i> Analytics</a>
+         <a href="#" class="nav-item"><i class="ph ph-shield-check"></i> Compliance</a>
+         <a href="settings.html" class="nav-item"><i class="ph ph-gear"></i> Settings</a>
+      </nav>
+
+      <div class="sidebar-bottom">
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="app-main">
+      <header class="main-header" style="margin-bottom: 24px;">
+         <h1 style="font-size: 2rem;">Overview</h1>
+
+      </header>
+
+      <!-- Top Banner (Grainish Inspired) -->
+      <div class="report-banner">
+         <h1>Report Overview</h1>
+         <div class="report-stats">
+            <div class="stat-item">
+               <span class="stat-label">TOTAL DELIVERIES</span>
+               <span class="stat-value">450</span>
+            </div>
+            <div class="stat-item">
+               <span class="stat-label">ACTIVE SENSORS</span>
+               <span class="stat-value">15</span>
+            </div>
+            <div class="stat-item">
+               <span class="stat-label">MONTHLY INCOME</span>
+               <span class="stat-value">$12.5k</span>
+            </div>
+         </div>
+
+         <!-- Abstract Graphic Overlay instead of Wheat -->
+         <svg class="banner-graphic" viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="80" fill="none" stroke="var(--black)" stroke-width="2" stroke-dasharray="4 8" />
+            <circle cx="100" cy="100" r="60" fill="none" stroke="var(--black)" stroke-width="1" />
+            <circle cx="100" cy="100" r="40" fill="none" stroke="var(--black)" stroke-width="4" stroke-dasharray="10 20" />
+            <path d="M100 20 L100 180 M20 100 L180 100" stroke="var(--black)" stroke-width="1" stroke-dasharray="4 4" />
+         </svg>
+      </div>
+
+      <!-- Report Grid Layout -->
+      <div class="report-grid">
+         
+         <!-- Chart Card (Dark) -->
+         <div class="chart-card">
+            <h3 class="section-title">Delivery Analytics</h3>
+            <div style="position: absolute; top: 100px; left: 45%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; z-index: 10;">
+               <div style="background: var(--white); color: var(--black); padding: 4px 12px; border-radius: 100px; font-size: 0.8rem; font-weight: 600;">28 min/avg</div>
+               <div style="width: 2px; height: 30px; background: rgba(255,255,255,0.5);"></div>
+               <div style="width: 10px; height: 10px; background: var(--white); border-radius: 50%; box-shadow: 0 0 0 4px rgba(255,255,255,0.2);"></div>
+            </div>
+
+            <svg viewBox="0 0 1000 200" style="width: 100%; height: 160px; margin-top: 16px; overflow: visible;" preserveAspectRatio="none">
+               <defs>
+                 <linearGradient id="glowG" x1="0" y1="0" x2="1" y2="0">
+                     <stop offset="0%" stop-color="#fff" opacity="0.2"/>
+                     <stop offset="50%" stop-color="var(--lime)" />
+                     <stop offset="100%" stop-color="#fff" opacity="0.2"/>
+                 </linearGradient>
+                 <linearGradient id="areaG" x1="0" y1="0" x2="0" y2="1">
+                     <stop offset="0%" stop-color="var(--lime)" opacity="0.2" />
+                     <stop offset="100%" stop-color="var(--lime)" opacity="0" />
+                 </linearGradient>
+               </defs>
+               <path d="M0,120 C150,130 250,50 350,100 C465,150 480,80 600,80 C750,80 800,90 900,40 C950,20 1000,80 1000,80" fill="none" stroke="url(#glowG)" stroke-width="4" stroke-linecap="round"/>
+               <path d="M0,120 C150,130 250,50 350,100 C465,150 480,80 600,80 C750,80 800,90 900,40 C950,20 1000,80 1000,80 L1000,200 L0,200 Z" fill="url(#areaG)" />
+               <path d="M0,80 C150,180 350,80 450,90 C550,100 600,30 750,130 C850,200 950,130 1000,140" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-dasharray="6,8" stroke-linecap="round"/>
+            </svg>
+
+            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 16px;">
+               <span>0 days</span>
+               <span>14 days</span>
+               <span>30 days</span>
+            </div>
+         </div>
+
+         <!-- Critical Alerts Card -->
+         <div class="alerts-card">
+            <h3 class="section-title">Critical Alerts</h3>
+            
+            <div class="alert-row">
+               <div class="alert-icon" style="color: var(--black);"><i class="ph-bold ph-check"></i></div>
+               <div class="alert-text">
+                  <div class="id">Sensor #D001</div>
+                  <div class="desc">Optimal reading</div>
+               </div>
+               <i class="ph-bold ph-check-circle" style="color: var(--black); font-size: 1.2rem;"></i>
+            </div>
+
+            <div class="alert-row">
+               <div class="alert-icon" style="color: #ff4d00;"><i class="ph-bold ph-battery-low"></i></div>
+               <div class="alert-text" style="opacity: 0.7;">
+                  <div class="id">Sensor #D005</div>
+                  <div class="desc">Low battery level</div>
+               </div>
+               <i class="ph-bold ph-x-circle" style="opacity: 0.4; font-size: 1.2rem;"></i>
+            </div>
+
+            <div class="alert-row">
+               <div class="alert-icon" style="color: var(--black);"><i class="ph-bold ph-warning"></i></div>
+               <div class="alert-text">
+                  <div class="id">Sensor #D014</div>
+                  <div class="desc">Pressure above normal</div>
+               </div>
+               <i class="ph-bold ph-check-circle" style="color: var(--black); font-size: 1.2rem;"></i>
+            </div>
+         </div>
+
+         <!-- Activity Tall Card -->
+         <div class="activity-tall">
+            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+               <h3 class="section-title">Activity Overview</h3>
+               <span style="font-size: 0.85rem; color: var(--text-secondary); cursor: pointer;">Details</span>
+            </div>
+
+            <!-- Days List -->
+            <div style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 24px;">
+               <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span style="background: var(--black); color: var(--white); padding: 4px 10px; border-radius: 100px;">Fri</span><span>Sat</span>
+            </div>
+
+            <!-- Mini Sine Wave Chart -->
+            <div style="position: relative; height: 100px; margin-bottom: 16px;">
+               <div style="position: absolute; top: 10px; left: 40%; transform: translateX(-50%); background: var(--white); padding: 4px 10px; border-radius: 8px; font-size: 0.75rem; font-weight: 600; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">Dispatching</div>
+               <div style="position: absolute; top: 40px; left: 40%; width: 1px; height: 25px; border-left: 1px dashed var(--black);"></div>
+               <div style="position: absolute; top: 58px; left: 40%; transform: translate(-50%, -50%); width: 24px; height: 24px; background: var(--white); border-radius: 50%; box-shadow: 0 4px 12px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; font-size: 0.85rem;"><i class="ph-fill ph-truck"></i></div>
+               
+               <svg viewBox="0 0 100 30" style="width: 100%; height: 100%; overflow: visible;" preserveAspectRatio="none">
+                  <path d="M0,20 C10,20 20,25 30,25 C40,25 45,5 55,10 C65,15 75,25 85,20 C95,15 100,5 100,5" fill="none" stroke="rgba(0,0,0,0.2)" stroke-width="1.5" stroke-linecap="round"/>
+                  <path d="M0,20 C10,20 20,25 30,25 C40,25 45,5 55,10 C65,15 75,25 85,20 C95,15 100,5 100,5 L100,30 L0,30 Z" fill="rgba(0,0,0,0.03)" />
+               </svg>
+               
+               <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-secondary); margin-top: 8px;">
+                  <span>10:00</span><span>12:00</span><span>14:00</span><span>16:00</span><span>18:00</span>
+               </div>
+            </div>
+
+            <!-- Activity List Below Chart -->
+            <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 32px;">
+               
+               <div style="background: var(--white); border-radius: 16px; padding: 16px; display: flex; justify-content: space-between; align-items: center;">
+                  <div>
+                     <div style="font-weight: 600; font-size: 0.9rem; margin-bottom: 4px;">Route Optimization</div>
+                     <div style="font-size: 0.75rem; color: var(--text-secondary); display: flex; align-items: center; gap: 4px;"><i class="ph-fill ph-clock"></i> 10:30–11:00</div>
+                  </div>
+                  <div style="font-size: 0.75rem; font-weight: 600; padding: 4px 12px; border-radius: 100px; background: #f3f4f1;">Scheduled</div>
+               </div>
+
+               <div style="background: var(--white); border-radius: 16px; padding: 16px; display: flex; justify-content: space-between; align-items: center;">
+                  <div>
+                     <div style="font-weight: 600; font-size: 0.9rem; margin-bottom: 4px;">Sensor System Check</div>
+                     <div style="font-size: 0.75rem; color: var(--text-secondary); display: flex; align-items: center; gap: 4px;"><i class="ph-fill ph-check-circle"></i> 11:30–12:00</div>
+                  </div>
+                  <div style="font-size: 0.75rem; font-weight: 600; padding: 4px 12px; border-radius: 100px; background: rgba(0,0,0,0.05);">Completed</div>
+               </div>
+
+               <div style="background: var(--white); border-radius: 16px; padding: 16px; display: flex; justify-content: space-between; align-items: center;">
+                  <div>
+                     <div style="font-weight: 600; font-size: 0.9rem; margin-bottom: 4px;">Battery Replacement</div>
+                     <div style="font-size: 0.75rem; color: var(--text-secondary); display: flex; align-items: center; gap: 4px;"><i class="ph-fill ph-spinner-gap"></i> 18:00–18:30</div>
+                  </div>
+                  <div style="font-size: 0.75rem; font-weight: 600; padding: 4px 12px; border-radius: 100px; background: #f3f4f1;">In Progress</div>
+               </div>
+
+            </div>
+         </div>
+
+         <!-- Active Fleet Status Table Card -->
+         <div class="status-table-card">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px;">
+               <h3 class="section-title" style="margin-bottom: 0;">Active Fleet Status</h3>
+               <span style="font-size: 0.85rem; font-weight: 600; cursor: pointer;">Explore all</span>
+            </div>
+
+            <table class="sensor-table">
+               <thead>
+                  <tr>
+                     <th>№</th>
+                     <th>Health</th>
+                     <th>Load (%)</th>
+                     <th>Signal</th>
+                     <th>ETA</th>
+                     <th></th>
+                  </tr>
+               </thead>
+               <tbody>
+                  <tr>
+                     <td><strong>№1</strong></td>
+                     <td><div class="radial-sm" style="border-right-color: var(--lime); border-top-color: var(--lime);">96%</div></td>
+                     <td><div style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-drop"></i> 80%</div></td>
+                     <td><div style="display: flex; align-items: center; gap: 8px;"><i class="ph-bold ph-wifi-high"></i> Strong</div></td>
+                     <td><div style="display: flex; align-items: center; gap: 8px;"><i class="ph-bold ph-clock"></i> 14 mins</div></td>
+                     <td><button class="pill-btn bg-lime text-black" style="padding: 6px 16px; font-size: 0.8rem;">Details</button></td>
+                  </tr>
+                  <tr>
+                     <td><strong>№2</strong></td>
+                     <td><div class="radial-sm" style="border-right-color: #ff4d00; border-top-color: #ff4d00;">78%</div></td>
+                     <td><div style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-drop" style="opacity: 0.5;"></i> 45%</div></td>
+                     <td><div style="display: flex; align-items: center; gap: 8px;"><i class="ph-bold ph-wifi-high"></i> Strong</div></td>
+                     <td><div style="display: flex; align-items: center; gap: 8px;"><i class="ph-bold ph-clock"></i> 22 mins</div></td>
+                     <td><button class="pill-btn bg-lime text-black" style="padding: 6px 16px; font-size: 0.8rem;">Details</button></td>
+                  </tr>
+                  <tr>
+                     <td><strong>№3</strong></td>
+                     <td><div class="radial-sm" style="border-right-color: var(--lime); border-top-color: var(--lime);">92%</div></td>
+                     <td><div style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-drop"></i> 90%</div></td>
+                     <td><div style="display: flex; align-items: center; gap: 8px;"><i class="ph-bold ph-wifi-low"></i> Weak</div></td>
+                     <td><div style="display: flex; align-items: center; gap: 8px;"><i class="ph-bold ph-clock"></i> 45 mins</div></td>
+                     <td><button class="pill-btn bg-grey text-black" style="padding: 6px 16px; font-size: 0.8rem;">Details</button></td>
+                  </tr>
+               </tbody>
+            </table>
+         </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

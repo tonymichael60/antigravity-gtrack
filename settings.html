@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G-TRACK - Settings</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <script src="theme.js"></script>
+</head>
+<body class="detail-page">
+  <div class="dashboard-container" style="display: flex; flex-direction: column; width: 100%; max-width: 1000px; margin: 0 auto;">
+    
+    <!-- Top Nav -->
+    <div class="sub-nav" style="display: flex; align-items: center; gap: 24px; margin-bottom: 24px;">
+       <button class="circle-btn bg-white" style="box-shadow: 0 4px 12px rgba(0,0,0,0.05);" onclick="window.location.href='index.html'">
+          <i class="ph ph-arrow-u-up-left"></i>
+       </button>
+       <h1 style="margin: 0; font-size: 2.2rem; letter-spacing: -0.04em;">Settings</h1>
+    </div>
+
+    <!-- Settings Layout -->
+    <div class="settings-layout" style="display: grid; grid-template-columns: 280px 1fr; gap: 40px; align-items: start; height: 100%;">
+       
+       <!-- Sidebar -->
+       <div class="settings-sidebar card bg-white">
+         <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px;">
+           <li class="settings-nav-item active"><i class="ph ph-palette"></i> Appearance</li>
+           <li class="settings-nav-item"><i class="ph ph-user"></i> Account Profile</li>
+           <li class="settings-nav-item">
+             <i class="ph ph-bell"></i> Notifications
+             <div class="live-dot ml-auto"></div>
+           </li>
+           <li class="settings-nav-item"><i class="ph ph-lock"></i> Security</li>
+           <li class="settings-nav-item"><i class="ph ph-users"></i> Team & Workspaces</li>
+           <li style="height: 1px; background: var(--grey); margin: 12px 0;"></li>
+           <li class="settings-nav-item" style="color: #ff3a3a; font-weight: 600;"><i class="ph ph-sign-out"></i> Log out</li>
+         </ul>
+       </div>
+
+       <!-- Content Area -->
+       <div class="settings-content-area column" style="gap: 24px;">
+         
+         <!-- Appearance Section -->
+         <div class="card bg-white">
+           <h2 style="margin-bottom: 8px;">Theme Preference</h2>
+           <p style="color: var(--text-secondary); margin-bottom: 32px;">Customize your workspace appearance. It instantly applies globally.</p>
+           
+           <div class="theme-options" style="display: flex; gap: 24px;">
+              <button class="theme-btn" data-theme-value="light" style="flex: 1; padding: 32px 24px; border-radius: 16px; border: 2px solid var(--grey); cursor: pointer; text-align: center; gap: 16px; display: flex; flex-direction: column; font-weight: 500; font-size: 1.1rem; color: var(--black); background: transparent; transition: all 0.2s;">
+                <i class="ph ph-sun" style="font-size: 2.5rem;"></i> Light Mode
+              </button>
+              <button class="theme-btn" data-theme-value="dark" style="flex: 1; padding: 32px 24px; border-radius: 16px; border: 2px solid var(--grey); cursor: pointer; text-align: center; gap: 16px; display: flex; flex-direction: column; font-weight: 500; font-size: 1.1rem; color: var(--black); background: transparent; transition: all 0.2s;">
+                <i class="ph ph-moon" style="font-size: 2.5rem;"></i> Dark Mode
+              </button>
+           </div>
+         </div>
+
+         <!-- General / Regional Settings Fake Mockups -->
+         <div class="card bg-white">
+           <h2 style="margin-bottom: 24px;">Language & Region</h2>
+           <div class="settings-row" style="display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 1px dashed var(--grey);">
+             <span style="font-weight: 500; color: var(--text-secondary);">Display Language</span>
+             <div class="dropdown-pill outline bg-hover" style="color: var(--black); border: 1px solid var(--grey);">
+               English (US) <i class="ph ph-caret-down"></i>
+             </div>
+           </div>
+           <div class="settings-row" style="display: flex; justify-content: space-between; align-items: center; padding: 16px 0 0;">
+             <span style="font-weight: 500; color: var(--text-secondary);">Time Zone</span>
+             <div class="dropdown-pill outline bg-hover" style="color: var(--black); border: 1px solid var(--grey);">
+               (UTC) Coordinates <i class="ph ph-caret-down"></i>
+             </div>
+           </div>
+         </div>
+
+       </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GTrack Dashboard Clone</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Phosphor Icons for crisp modern icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+</head>
+<body>
+  <div class="dashboard-container">
+    
+    <!-- LEFT COLUMN -->
+    <div class="column col-left">
+      
+      <!-- OxeliaMetrix Card -->
+      <div class="card widget-oxelia">
+        <!-- Exact Curve Cutout & Actions -->
+        <div class="oxelia-cutout">
+          <div class="cutout-curve-top"></div>
+          <div class="cutout-curve-bottom"></div>
+          <button class="circle-btn bg-white" onclick="window.location.href='settings.html'"><i class="ph ph-gear"></i></button>
+          <button class="circle-btn bg-white"><i class="ph ph-bell"></i></button>
+          <button class="circle-btn bg-white"><i class="ph ph-sliders"></i></button>
+        </div>
+        
+        <div class="user-info" style="margin-top: 24px;">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150" alt="Alesha" class="avatar">
+          <div class="user-text">
+            <h4>Alesha Hyocinth</h4>
+            <p>Project Manager</p>
+          </div>
+        </div>
+        
+        <div class="project-info">
+          <h1>G-TRACK Dashboard</h1>
+          <p>Industry: <strong>BHARATH GAS</strong></p>
+        </div>
+        
+        <div class="progress-section" id="gas-weight-monitor">
+          <div class="progress-labels">
+            <span style="display: flex; align-items: center; gap: 6px;">
+              <span class="live-dot pulse"></span> Real-time Gas Weight
+            </span>
+            <span id="gas-weight-value">124.5 kg</span>
+          </div>
+          <div class="progress-bar-bg">
+            <div id="gas-weight-fill" class="progress-bar-fill" style="width: 62%; transition: width 0.5s ease-out, background-color 0.5s ease;"></div>
+          </div>
+        </div>
+        
+        <div class="card-footer">
+          <div class="select-dropdown">
+            <i class="ph ph-files"></i>
+            <span>Select a report</span>
+            <i class="ph ph-caret-down offset-right"></i>
+          </div>
+          <button class="circle-btn bg-black text-white ml-auto">
+            <i class="ph-fill ph-paper-plane-tilt"></i>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Project Roadmap Card -->
+      <div class="card widget-roadmap">
+        <div class="roadmap-header">
+          <h2>Project<br>Roadmap</h2>
+          <button class="pill-btn bg-black text-white">
+            <i class="ph ph-plus"></i> Add task
+          </button>
+        </div>
+        
+        <div class="gantt-chart">
+          
+          <div class="gantt-track">
+            <div class="gantt-bar grey-bar" style="width: 50%;">
+              <span class="bar-title">Intro</span>
+              <span class="bar-progress">100%</span>
+              <div class="avatar-stack">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150" alt="">
+                <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&q=80&w=150" alt="">
+              </div>
+            </div>
+          </div>
+          
+          <div class="gantt-track offset-track">
+            <div class="gantt-bar grey-bar" style="width: 60%; margin-left: 20%;">
+              <span class="bar-title">Audit</span>
+              <span class="bar-progress">59%</span>
+              <div class="bar-striped"></div>
+              <div class="avatar-stack">
+                <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150" alt="">
+              </div>
+            </div>
+          </div>
+          
+          <div class="gantt-track">
+            <div class="gantt-bar lime-bar" style="width: 75%;">
+              <span class="bar-title">Research</span>
+              <span class="bar-progress">75%</span>
+              <div class="avatar-stack">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150" alt="">
+                <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&q=80&w=150" alt="">
+                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150" alt="">
+              </div>
+            </div>
+          </div>
+          
+          <!-- Timeline Line -->
+          <div class="timeline-marker">
+            <div class="marker-dot"></div>
+            <div class="marker-line"></div>
+          </div>
+          
+        </div>
+        
+        <div class="days-axis">
+          <span>Mon 12</span>
+          <span>Tue 13</span>
+          <span>Wed 14</span>
+          <span class="active-day">Thu 15</span>
+          <span>Fri 16</span>
+        </div>
+      </div>
+    </div>
+    
+    <!-- RIGHT COLUMN -->
+    <div class="column col-right">
+      
+      <!-- Report Card -->
+      <div class="card widget-meetings" style="cursor: pointer; transition: transform 0.2s;" onclick="window.location.href='report.html'">
+        <div class="meetings-header">
+          <div>
+            <h2>Report</h2>
+            <p class="subtitle"><i class="ph ph-file-text"></i> 3 reports &bull; Thu, 11</p>
+          </div>
+          <div class="dropdown-pill">
+            September <i class="ph ph-caret-down"></i>
+          </div>
+        </div>
+        
+        <div class="calendar-scroll">
+          <div class="cal-day">
+            <span class="cal-date">8</span>
+            <span class="cal-name">Mon</span>
+          </div>
+          <div class="cal-day">
+            <span class="cal-date">9</span>
+            <span class="cal-name">Tue</span>
+          </div>
+          <div class="cal-day">
+            <span class="cal-date">10</span>
+            <span class="cal-name">Wed</span>
+          </div>
+          <div class="cal-day active-cal">
+            <span class="cal-date">11</span>
+            <span class="cal-name">Thu</span>
+          </div>
+          <div class="cal-day">
+            <span class="cal-date">12</span>
+            <span class="cal-name">Fri</span>
+          </div>
+          <div class="cal-day">
+            <span class="cal-date">13</span>
+            <span class="cal-name">Sat</span>
+          </div>
+        </div>
+        
+        <!-- Timeline dots at bottom -->
+        <div class="timeline-dots">
+          <div class="dot small"></div>
+          <div class="dot"></div>
+          <div class="dot small"></div>
+          <div class="dot active"></div>
+          <div class="dot small"></div>
+          <div class="dot"></div>
+          <div class="dot small"></div>
+        </div>
+      </div>
+      
+      <!-- Bottom Right Grid -->
+      <div class="bottom-grid">
+        
+        <!-- Date Widget -->
+        <div class="card widget-date pb-0">
+          <div class="date-big">19</div>
+          <div class="date-text">
+            <strong>Tue,</strong><br>January
+          </div>
+        </div>
+        
+        <!-- Total Project Time -->
+        <div class="card widget-total-time">
+          <div class="total-header">
+            <button class="icon-circle bg-white"><i class="ph ph-clock"></i></button>
+            <span>Total project<br>time</span>
+          </div>
+          <div class="total-value">
+            645 <span>h</span>
+          </div>
+        </div>
+        
+        <!-- Efficiency Chart -->
+        <div class="card widget-efficiency bg-black text-white">
+          <div class="eff-header">
+            <h3>Efficiency</h3>
+            <span class="dropdown-text">January <i class="ph ph-caret-down"></i></span>
+          </div>
+          <div class="chart-container">
+            <svg viewBox="0 0 200 80" class="sparkline-svg">
+              <path class="glow-path" d="M0,50 Q20,30 40,40 T80,30 T120,40 T160,20 T200,30" fill="none" stroke="var(--lime)" stroke-width="3" />
+              <!-- Gradient fill -->
+              <path d="M0,50 Q20,30 40,40 T80,30 T120,40 T160,20 T200,30 L200,80 L0,80 Z" fill="url(#limeGradient)" opacity="0.2" />
+              <defs>
+                <linearGradient id="limeGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="var(--lime)" />
+                  <stop offset="100%" stop-color="transparent" />
+                </linearGradient>
+              </defs>
+              <circle cx="80" cy="30" r="5" fill="black" stroke="var(--lime)" stroke-width="3" />
+            </svg>
+            <div class="tooltip">+40%</div>
+          </div>
+        </div>
+        
+        <!-- AI Smart Assistant -->
+        <div class="card widget-ai">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=300" alt="AI Agent" class="ai-bg">
+          <button class="circle-btn bg-lime absolute-top-left">
+            <i class="ph ph-arrow-up-right"></i>
+          </button>
+          <div class="ai-text">
+            <span>AI</span><br>
+            <strong>Smart<br>Assistant</strong>
+          </div>
+        </div>
+        
+      </div>
+      
+    </div>
+  </div>
+
+  <script src="theme.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
