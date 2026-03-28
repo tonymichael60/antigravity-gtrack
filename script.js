@@ -114,4 +114,49 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }, 2000);
   }
+
+  // Interactive Calendar inside Report Dashboard
+  const reportCalCells = document.querySelectorAll('.cal-cell:not(.old-month)');
+  const analyticsLine = document.getElementById('analytics-line');
+  const analyticsArea = document.getElementById('analytics-area');
+  const analyticsAvg = document.getElementById('analytics-avg');
+
+  if (analyticsLine && analyticsArea && reportCalCells.length > 0) {
+    reportCalCells.forEach(cell => {
+      cell.addEventListener('click', () => {
+        // Update active class
+        document.querySelectorAll('.cal-cell').forEach(c => c.classList.remove('active-date'));
+        cell.classList.add('active-date');
+
+        // Generate smooth path to simulate data change
+        let pts = [];
+        for(let i = 0; i <= 5; i++) {
+           pts.push({ x: i * 200, y: Math.floor(Math.random() * 120 + 40) });
+        }
+        let d = `M${pts[0].x},${pts[0].y}`;
+        for(let i = 0; i < 5; i++) {
+           const p1 = pts[i];
+           const p2 = pts[i+1];
+           const mx = (p1.x + p2.x) / 2;
+           d += ` C${mx},${p1.y} ${mx},${p2.y} ${p2.x},${p2.y}`;
+        }
+        
+        // Update SVG (animations are handled by CSS transitions)
+        analyticsLine.setAttribute('d', d);
+        analyticsArea.setAttribute('d', d + ' L1000,200 L0,200 Z');
+        
+        // Update stats
+        if(analyticsAvg) {
+           analyticsAvg.textContent = (Math.floor(Math.random() * 25) + 12) + ' min/avg';
+        }
+        
+        const dateStr = Array.from(cell.childNodes)
+          .filter(node => node.nodeType === Node.TEXT_NODE)
+          .map(node => node.textContent.trim())
+          .join('');
+
+        showToast('Updated Delivery Analytics for Day ' + dateStr);
+      });
+    });
+  }
 });
