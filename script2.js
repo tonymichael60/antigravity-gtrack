@@ -79,37 +79,29 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initial Setup
     gasWeightFill.style.strokeDasharray = pathLength;
-    gaugePointer.style.transition = 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
     
-    setInterval(() => {
-      const change = (Math.random() * 4) - 2.0; 
-      currentWeight = Math.max(0, Math.min(maxCapacity, currentWeight + change));
+    function updateGauge(weight) {
+      gasWeightValue.textContent = `${weight.toFixed(1)} kg`;
       
-      gasWeightValue.textContent = `${currentWeight.toFixed(1)} kg`;
-      
-      // Calculate offset (100% full = offset 0)
-      const percentage = currentWeight / maxCapacity;
+      const percentage = weight / maxCapacity;
       const offset = pathLength * (1 - percentage);
       gasWeightFill.style.strokeDashoffset = offset;
       
-      // Calculate precise angle aiming at the exact rounded linecap tip
       const angle = percentage * Math.PI;
-      // 80 is the arc radius, exact path tip coordinates
       const x_tip = 100 - 80 * Math.cos(angle);
       const y_tip = 110 - 80 * Math.sin(angle);
-      // add 10px tangent vector for the stroke-linecap="round" (stroke-width: 20)
       const x_cap = x_tip + 10 * Math.sin(angle);
       const y_cap = y_tip - 10 * Math.cos(angle);
-      // Delta from the pointer's fixed anchor origin (X=100, Y=85)
       const dx = x_cap - 100;
       const dy = y_cap - 85;
-      // Base polygon arrow points left (-1, 0) which is 180 deg
-      const rotation = (Math.atan2(dy, dx) * 180 / Math.PI) - 180;
+      
+      let angleDeg = Math.atan2(dy, dx) * 180 / Math.PI;
+      if (angleDeg < 100) angleDeg += 360;
+      const rotation = angleDeg - 180;
       
       gaugePointer.style.transformOrigin = '0px 0px';
       gaugePointer.style.transform = `rotate(${rotation}deg)`;
       
-      // Color logic warning
       if (percentage > 0.85) {
         gasWeightFill.style.stroke = '#ff3a3a'; 
         gasWeightValue.style.color = '#ff3a3a';
@@ -117,6 +109,35 @@ document.addEventListener('DOMContentLoaded', () => {
         gasWeightFill.style.stroke = 'var(--black)'; 
         gasWeightValue.style.color = 'var(--black)';
       }
+    }
+
+    // Set to 0 instantly
+    gasWeightFill.style.transition = 'none';
+    gaugePointer.style.transition = 'none';
+    updateGauge(0);
+
+    // Force a reflow
+    void gasWeightFill.getBoundingClientRect();
+
+    // Enable slower transition for the initial load animation
+    gasWeightFill.style.transition = 'stroke-dashoffset 1.5s cubic-bezier(0.34, 1.56, 0.64, 1), stroke 0.6s ease';
+    gaugePointer.style.transition = 'transform 1.5s cubic-bezier(0.34, 1.56, 0.64, 1)';
+    
+    // Trigger animation to current weight
+    setTimeout(() => {
+      updateGauge(currentWeight);
+    }, 100);
+    
+    // Resume random interval variations with normal transition speed
+    setInterval(() => {
+      const change = (Math.random() * 4) - 2.0; 
+      currentWeight = Math.max(0, Math.min(maxCapacity, currentWeight + change));
+      
+      // Keep standard update speed for tick variations
+      gasWeightFill.style.transition = 'stroke-dashoffset 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), stroke 0.6s ease';
+      gaugePointer.style.transition = 'transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)';
+      
+      updateGauge(currentWeight);
     }, 2000);
   }
 });
