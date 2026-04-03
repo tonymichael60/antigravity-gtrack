@@ -1158,9 +1158,8 @@ body.monitoring-page {
 .bg-lime .progress-bar-fill, .widget-oxelia .progress-bar-fill {
   background-color: #111111 !important;
 }
-[data-theme="dark"] .new-gas-card path, [data-theme="dark"] .new-gas-card polygon {
-  stroke: #111111;
-  fill: #111111;
+[data-theme="dark"] .new-gas-card {
+  --black: #111111;
 }
 
 /* Dark Green backgrounds MUST always have light text */
