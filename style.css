@@ -650,8 +650,10 @@ p { color: var(--text-secondary); font-size: 0.95rem; }
   gap: 24px;
   position: relative;
 }
-.eff-header { display: flex; flex-direction: column; gap: 4px; z-index: 2; position: relative;}
-.eff-header h3 { font-size: 1rem; color: #fff; font-weight: 400;}
+.eff-header { display: flex; flex-direction: column; gap: 8px; z-index: 2; position: relative;}
+.eff-header h3 { font-size: 1rem; color: #fff; font-weight: 500;}
+.eff-stats { display: flex; flex-direction: column; gap: 4px; }
+.eff-stat-line { color: rgba(255,255,255,0.7); font-size: 0.85rem; display: flex; justify-content: space-between; align-items: center; }
 .dropdown-text { color: rgba(255,255,255,0.6); font-size: 0.85rem; display: flex; align-items: center; gap: 4px; }
 
 .chart-container {

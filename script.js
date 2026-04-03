@@ -58,7 +58,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const projectInfo = document.querySelector('.project-info');
   if (projectInfo) {
     projectInfo.style.cursor = 'pointer';
-    projectInfo.title = 'Click to open real-time monitoring';
     projectInfo.addEventListener('click', (e) => {
       e.stopPropagation();
       // Added a brief UI feedback showing transition
@@ -183,4 +182,67 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // Set the usage history current month dynamically
+  const usageMonth = document.getElementById('usage-month');
+  if (usageMonth) {
+    const today = new Date();
+    usageMonth.textContent = today.toLocaleDateString('en-US', { month: 'long' });
+  }
+
+  // --- Dynamic Dashboard Date Syncer ---
+  const today = new Date();
+  
+  // 1. Report Subtitle Date
+  const reportSubtitle = document.getElementById('report-subtitle');
+  if (reportSubtitle) {
+    const options = { weekday: 'short', day: 'numeric' };
+    reportSubtitle.innerHTML = `<i class="ph ph-file-text"></i> 3 reports &bull; ${today.toLocaleDateString('en-US', options)}`;
+  }
+
+  // 2. Report Horizontal Calendar Syncer (center on today)
+  const calScrollDays = document.querySelectorAll('.calendar-scroll .cal-day');
+  if (calScrollDays.length === 6) {
+    const offsetStart = -3; // Put today at index 3 (4th item)
+    calScrollDays.forEach((el, index) => {
+      const iterDate = new Date();
+      iterDate.setDate(today.getDate() + offsetStart + index);
+      
+      el.querySelector('.cal-date').textContent = iterDate.getDate();
+      el.querySelector('.cal-name').textContent = iterDate.toLocaleDateString('en-US', { weekday: 'short' });
+      
+      if (offsetStart + index === 0) {
+        el.classList.add('active-cal');
+      } else {
+        el.classList.remove('active-cal');
+      }
+    });
+  }
+
+  // 3. Usage History Bars Syncer
+  const usageBars = document.querySelectorAll('.bar-container .bar-col');
+  const currentNumDay = today.getDate();
+  usageBars.forEach((col, index) => {
+    const day = index + 1; // 1 to 30
+    const innerBar = col.querySelector('.bar');
+    if (!innerBar) return;
+
+    if (day > currentNumDay) {
+      // Future
+      col.classList.add('future-col');
+      col.removeAttribute('data-tooltip');
+      innerBar.className = 'bar bar-future';
+      // Fallback height for aesthetics
+      innerBar.style.height = '50%';
+    } else {
+      // Past or present (retain mock data, or un-future if previously static)
+      col.classList.remove('future-col');
+      if (innerBar.classList.contains('bar-future')) {
+         innerBar.className = 'bar bar-green'; 
+         innerBar.style.height = '30%'; // random mock
+         col.setAttribute('data-tooltip', `${today.toLocaleDateString('en-US', { month: 'short' })} ${day} (mocked)`);
+      }
+    }
+  });
+
 });
