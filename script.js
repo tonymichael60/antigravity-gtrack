@@ -159,4 +159,28 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // Dynamic Tooltip for Usage History Graph
+  const barCols = document.querySelectorAll('.bar-col');
+  if (barCols.length > 0) {
+    const tooltip = document.createElement('div');
+    tooltip.className = 'dynamic-tooltip';
+    document.body.appendChild(tooltip);
+
+    barCols.forEach(col => {
+      col.addEventListener('mousemove', (e) => {
+        const text = col.getAttribute('data-tooltip');
+        if (text) {
+          tooltip.textContent = text;
+          tooltip.classList.add('show');
+          // Place slightly above the cursor
+          tooltip.style.left = e.pageX + 'px';
+          tooltip.style.top = (e.pageY - 45) + 'px';
+        }
+      });
+      col.addEventListener('mouseleave', () => {
+        tooltip.classList.remove('show');
+      });
+    });
+  }
 });

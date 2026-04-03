@@ -222,96 +222,159 @@ p { color: var(--text-secondary); font-size: 0.95rem; }
 /* ==============================================
    Widget 2: Project Roadmap (Bottom Left)
 ============================================== */
-.widget-roadmap {
+/* ==============================================
+   Widget 2: Usage History (Bottom Left)
+============================================== */
+.widget-usage-history {
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  padding: 24px;
+  padding: 32px;
   flex: 1;
   justify-content: space-between;
 }
 
-.roadmap-header {
+.usage-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  margin-bottom: 40px;
 }
 
-.gantt-chart {
-  position: relative;
+.usage-title {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding-bottom: 20px;
+  gap: 8px;
+  font-family: monospace; /* Gives a technical feel like the screenshot */
 }
 
-.gantt-track {
-  display: flex;
-  align-items: center;
-}
-
-.gantt-bar {
-  display: flex;
-  align-items: center;
-  padding: 6px 16px;
-  border-radius: 100px;
+.usage-title h2 {
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
   font-weight: 500;
-  font-size: 0.9rem;
-  gap: 12px;
-  position: relative;
 }
 
-.grey-bar { background-color: var(--grey); }
-.lime-bar { background-color: var(--lime); }
+.usage-title h2.text-muted {
+  color: var(--text-secondary);
+  opacity: 0.5;
+}
 
-.bar-progress { opacity: 0.6; font-size: 0.8rem; margin-left: auto; }
+.usage-month {
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  font-family: monospace;
+}
 
-.avatar-stack {
+.usage-body {
   display: flex;
-  align-items: center;
-}
-.avatar-stack img {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  border: 2px solid var(--white);
-  margin-left: -8px;
-}
-.avatar-stack img:first-child { margin-left: 0; }
-
-.timeline-marker {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 70%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  z-index: 10;
-}
-.marker-dot {
-  width: 10px;
-  height: 10px;
-  border: 2px solid var(--black);
-  border-radius: 50%;
-  background-color: var(--white);
-  margin-bottom: -1px;
-}
-.marker-line {
-  width: 2px;
+  gap: 16px;
   flex: 1;
-  background-color: var(--black);
+  min-height: 100px;
 }
 
-.days-axis {
+.y-axis {
+  position: relative;
+  width: 24px;
+  font-family: monospace;
+}
+
+.val-high {
+  position: absolute;
+  bottom: 50%;
+  transform: translateY(50%);
+  color: #ff3a3a;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.val-low {
+  position: absolute;
+  bottom: 0;
+  color: var(--black);
+  font-size: 1rem;
+  font-weight: 500;
+  transform: translateY(20%);
+}
+
+.graph-area {
+  position: relative;
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+}
+
+.bar-container {
   display: flex;
   justify-content: space-between;
-  border-top: 1px dashed #e0e0e0;
-  padding-top: 16px;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
+  align-items: flex-end;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
 }
-.active-day { color: var(--black); font-weight: 600; }
+
+.bar-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100%;
+  width: 5px; /* slightly thicker for 30 bars */
+  position: relative;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.bar-col:hover {
+  opacity: 0.8;
+}
+
+.dynamic-tooltip {
+  position: absolute;
+  background-color: var(--black);
+  color: var(--white);
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  pointer-events: none;
+  z-index: 9999;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+  opacity: 0;
+  transform: translateX(-50%);
+  transition: opacity 0.15s;
+}
+
+.dynamic-tooltip.show {
+  opacity: 1;
+}
+
+.bar {
+  width: 100%;
+}
+
+.bar-green {
+  background-color: var(--lime);
+}
+
+.bar-red {
+  background-color: #ff3a3a;
+}
+
+.bar-future {
+  background-color: var(--text-secondary);
+  opacity: 0.3;
+  border-radius: 4px;
+}
+
+.future-col {
+  cursor: default;
+}
+.future-col:hover {
+  opacity: 1; /* override default hover opacity */
+}
 
 /* ==============================================
    Widget 3: Upcoming Meetings (Top Right)
