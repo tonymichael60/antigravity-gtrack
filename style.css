@@ -78,8 +78,8 @@ p { color: var(--text-secondary); font-size: 0.95rem; }
 .bg-white { background-color: var(--white); }
 .bg-black { background-color: var(--black); }
 .bg-lime { background-color: var(--lime); }
-.text-white { color: var(--white); }
-.text-black { color: var(--black); }
+.text-white { color: var(--white) !important; }
+.text-black { color: var(--black) !important; }
 .ml-auto { margin-left: auto; }
 .offset-right { margin-left: auto; }
 
@@ -95,6 +95,7 @@ p { color: var(--text-secondary); font-size: 0.95rem; }
   cursor: pointer;
   font-size: 1.25rem;
   transition: transform 0.2s;
+  color: var(--text-primary);
 }
 .circle-btn:hover { transform: scale(1.05); }
 
@@ -107,6 +108,7 @@ p { color: var(--text-secondary); font-size: 0.95rem; }
   align-items: center;
   gap: 8px;
   cursor: pointer;
+  color: var(--text-primary);
 }
 
 /* ==============================================
@@ -643,7 +645,7 @@ p { color: var(--text-secondary); font-size: 0.95rem; }
 
 /* Widget Efficiency */
 .widget-efficiency {
-  background-color: var(--black);
+  background-color: #111111 !important;
   padding: 24px;
   display: flex;
   flex-direction: column;
@@ -1135,3 +1137,51 @@ body.monitoring-page {
 .sensor-table td { padding: 20px 16px; border-bottom: 1px solid rgba(0,0,0,0.05); font-weight: 500;}
 .sensor-table tr:last-child td { border-bottom: none; }
 .radial-sm { width: 40px; height: 40px; border-radius: 50%; border: 3px solid #E2E8F0; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 600;}
+
+/* ==============================================
+   Enforce High Contrast on Specific Backgrounds
+============================================== */
+
+/* Native Lime backgrounds MUST always have dark text */
+.bg-lime, .widget-oxelia, .new-gas-card.bg-lime {
+  color: #111111 !important;
+}
+.bg-lime p, .widget-oxelia p, .cal-day.active-cal p,
+.bg-lime .text-secondary, .widget-oxelia .text-secondary,
+.bg-lime .text-muted, .widget-oxelia .text-muted {
+  color: rgba(17, 17, 17, 0.7) !important;
+}
+.bg-lime .text-black, .widget-oxelia .text-black, .cal-day.active-cal .text-black,
+.bg-lime .cal-date, .cal-day.active-cal .cal-date {
+  color: #111111 !important;
+}
+.bg-lime .progress-bar-fill, .widget-oxelia .progress-bar-fill {
+  background-color: #111111 !important;
+}
+[data-theme="dark"] .new-gas-card path, [data-theme="dark"] .new-gas-card polygon {
+  stroke: #111111;
+  fill: #111111;
+}
+
+/* Dark Green backgrounds MUST always have light text */
+.widget-total-time {
+  color: #ffffff !important;
+}
+.widget-total-time p, .widget-total-time span {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+.widget-total-time .total-header .icon-circle {
+  color: #ffffff !important;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+}
+
+/* AI Smart Assistant Gradient Fix */
+[data-theme="dark"] .widget-ai::after {
+  background: linear-gradient(to top, rgba(26,26,26,1) 0%, rgba(26,26,26,0) 100%);
+}
+
+/* Usage History Title Fix */
+[data-theme="dark"] .usage-title h2.text-muted {
+  opacity: 1;
+  color: #bbbbbb;
+}

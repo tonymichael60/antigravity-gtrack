@@ -98,6 +98,24 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentWeight = 139.0;
     const maxCapacity = 200; // in kg
     
+    const updateRefillPrediction = (weight) => {
+      const refillDayEl = document.getElementById('refill-day');
+      const refillMonthEl = document.getElementById('refill-month-text');
+      if (refillDayEl && refillMonthEl) {
+         // Calculate predicted refill date based on usage history average (mocked to 5.2 kg/day)
+         const avgDailyUsage = 5.2; 
+         const daysRemaining = Math.max(0, weight / avgDailyUsage);
+         
+         const refillDate = new Date();
+         refillDate.setDate(refillDate.getDate() + Math.ceil(daysRemaining));
+         
+         refillDayEl.textContent = refillDate.getDate();
+         refillMonthEl.innerHTML = `<strong>${refillDate.toLocaleDateString('en-US', { weekday: 'short' })},</strong><br>${refillDate.toLocaleDateString('en-US', { month: 'long' })}`;
+      }
+    };
+    
+    updateRefillPrediction(currentWeight);
+
     // Update every 2 seconds
     setInterval(() => {
       const change = (Math.random() * 2) - 0.8;
@@ -111,6 +129,8 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         gasWeightFill.style.backgroundColor = 'var(--black)'; 
       }
+      
+      updateRefillPrediction(currentWeight);
     }, 2000);
   }
 
