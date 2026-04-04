@@ -122,6 +122,7 @@ p { color: var(--text-secondary); font-size: 0.95rem; }
   flex-direction: column;
   gap: 20px;
   position: relative;
+  overflow: visible !important;
 }
 
 .oxelia-cutout {
@@ -144,8 +145,11 @@ p { color: var(--text-secondary); font-size: 0.95rem; }
   left: -40px;
   width: 40px;
   height: 40px;
-  background: radial-gradient(circle at bottom left, transparent 40px, var(--bg-color) 41px);
+  background-color: transparent;
+  border-top-right-radius: 40px;
+  box-shadow: 20px -20px 0 20px var(--bg-color);
   pointer-events: none;
+  clip-path: inset(0);
 }
 
 .cutout-curve-bottom {
@@ -154,8 +158,11 @@ p { color: var(--text-secondary); font-size: 0.95rem; }
   right: 0;
   width: 40px;
   height: 40px;
-  background: radial-gradient(circle at bottom left, transparent 40px, var(--bg-color) 41px);
+  background-color: transparent;
+  border-top-right-radius: 40px;
+  box-shadow: 20px -20px 0 20px var(--bg-color);
   pointer-events: none;
+  clip-path: inset(0);
 }
 
 .user-info {
