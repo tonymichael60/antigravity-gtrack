@@ -255,12 +255,38 @@ document.addEventListener('DOMContentLoaded', () => {
       // Fallback height for aesthetics
       innerBar.style.height = '50%';
     } else {
-      // Past or present (retain mock data, or un-future if previously static)
+      // Past or present
       col.classList.remove('future-col');
       if (innerBar.classList.contains('bar-future')) {
          innerBar.className = 'bar bar-green'; 
          innerBar.style.height = '30%'; // random mock
          col.setAttribute('data-tooltip', `${today.toLocaleDateString('en-US', { month: 'short' })} ${day} (mocked)`);
+      }
+
+      // If it's today's bar, make it LIVE
+      if (day === currentNumDay) {
+        col.id = 'live-bar-col';
+        innerBar.id = 'live-bar-fill';
+        innerBar.style.transition = 'height 0.5s ease-out, background-color 0.5s ease';
+        
+        let currentHeight = parseFloat(innerBar.style.height) || 50;
+        
+        // Ensure tooltip updates to say Live
+        col.setAttribute('data-tooltip', `${today.toLocaleDateString('en-US', { month: 'short' })} ${day} • Live`);
+        
+        setInterval(() => {
+           // Fluctuate the height by -5 to +5 %
+           const change = (Math.random() * 10) - 5;
+           currentHeight = Math.max(10, Math.min(95, currentHeight + change));
+           innerBar.style.height = `${currentHeight}%`;
+           
+           // Color logic (mock thresholds)
+           if (currentHeight > 50) {
+             innerBar.className = 'bar bar-red';
+           } else {
+             innerBar.className = 'bar bar-green';
+           }
+        }, 3000);
       }
     }
   });
