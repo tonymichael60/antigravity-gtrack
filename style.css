@@ -620,7 +620,7 @@ p { color: var(--text-secondary); font-size: 0.95rem; }
 
 /* Widget Total Time */
 .widget-total-time {
-  background-color: var(--dark-green);
+  background-color: #111111 !important;
   color: var(--white);
   border-radius: var(--border-radius-lg);
   padding: 24px;

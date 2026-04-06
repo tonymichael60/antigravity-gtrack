@@ -14,7 +14,7 @@
   <div class="app-layout">
     <!-- Sidebar -->
     <aside class="app-sidebar bg-white">
-      <div class="sidebar-logo" style="cursor: pointer;" onclick="window.location.href='index.html'">
+      <div class="sidebar-logo" style="cursor: pointer;" onclick="window.location.href='dashboard.html'">
          <div class="icon-circle bg-lime text-black" style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
             <i class="ph-fill ph-fire"></i>
          </div>
@@ -41,10 +41,6 @@
       <header class="main-header">
          <h1>Dashboard</h1>
          <div class="header-actions">
-            <div class="search-bar">
-               <i class="ph ph-magnifying-glass"></i>
-               <input type="text" placeholder="Search devices or data...">
-            </div>
             <button class="circle-btn bg-white"><i class="ph-fill ph-bell"></i></button>
             <button class="circle-btn bg-white"><i class="ph-fill ph-question"></i></button>
          </div>
@@ -100,20 +96,20 @@
             <div class="card bg-black text-white" style="min-height: 280px; display: flex; flex-direction: column; border-radius: 40px; padding: 32px 40px;">
                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
                   <h3 style="font-weight: 600;">Consumption Trends</h3>
-                  <div class="pill-group" style="display: flex; gap: 8px;">
-                     <button class="pill active bg-white" style="border: none; padding: 8px 20px; border-radius: 100px; font-weight: 600; color: var(--black); cursor: pointer;">Weekly</button>
-                     <button class="pill" style="border: none; background: transparent; padding: 8px 20px; font-weight: 500; color: rgba(255,255,255,0.6); cursor: pointer;">Monthly</button>
+                  <div class="pill-group" id="trend-period-toggles" style="display: flex; gap: 8px;">
+                     <button class="pill active bg-white" data-period="weekly" style="border: none; padding: 8px 20px; border-radius: 100px; font-weight: 600; color: var(--black); cursor: pointer; transition: all 0.3s;">Weekly</button>
+                     <button class="pill" data-period="monthly" style="border: none; background: transparent; padding: 8px 20px; border-radius: 100px; font-weight: 500; color: rgba(255,255,255,0.6); cursor: pointer; transition: all 0.3s;">Monthly</button>
                   </div>
                </div>
                
-               <div class="trend-chart" style="flex: 1; display: flex; align-items: flex-end; justify-content: space-between; padding-top: 24px; position: relative;">
-                  <div class="trend-col"><div class="trend-bar bg-white" style="height: 40%; opacity: 0.4;"></div><span style="color: rgba(255,255,255,0.6);">Mon</span></div>
-                  <div class="trend-col"><div class="trend-bar bg-white" style="height: 30%; opacity: 0.4;"></div><span style="color: rgba(255,255,255,0.6);">Tue</span></div>
-                  <div class="trend-col"><div class="trend-bar bg-white" style="height: 45%; opacity: 0.4;"></div><span style="color: rgba(255,255,255,0.6);">Wed</span></div>
-                  <div class="trend-col"><div class="trend-bar active bg-lime" style="height: 70%; box-shadow: 0 0 16px rgba(212,255,58,0.4);"></div><span class="text-white font-medium">Thu</span></div>
-                  <div class="trend-col"><div class="trend-bar bg-white" style="height: 50%; opacity: 0.4;"></div><span style="color: rgba(255,255,255,0.6);">Fri</span></div>
-                  <div class="trend-col"><div class="trend-bar bg-white" style="height: 20%; opacity: 0.4;"></div><span style="color: rgba(255,255,255,0.6);">Sat</span></div>
-                  <div class="trend-col"><div class="trend-bar bg-white" style="height: 35%; opacity: 0.4;"></div><span style="color: rgba(255,255,255,0.6);">Sun</span></div>
+               <div class="trend-chart" id="consumption-trend-chart" style="flex: 1; display: flex; align-items: flex-end; justify-content: space-between; padding-top: 24px; position: relative;">
+                  <div class="trend-col"><div class="trend-bar" style="height: 40%;"></div><span>Mon</span></div>
+                  <div class="trend-col"><div class="trend-bar" style="height: 30%;"></div><span>Tue</span></div>
+                  <div class="trend-col"><div class="trend-bar" style="height: 45%;"></div><span>Wed</span></div>
+                  <div class="trend-col active"><div class="trend-bar" style="height: 70%;"></div><span>Thu</span></div>
+                  <div class="trend-col"><div class="trend-bar" style="height: 50%;"></div><span>Fri</span></div>
+                  <div class="trend-col"><div class="trend-bar" style="height: 20%;"></div><span>Sat</span></div>
+                  <div class="trend-col"><div class="trend-bar" style="height: 35%;"></div><span>Sun</span></div>
                </div>
             </div>
 
