@@ -14,7 +14,7 @@
     
     <!-- Top Nav -->
     <div class="sub-nav" style="display: flex; align-items: center; gap: 24px; margin-bottom: 24px;">
-       <button class="circle-btn bg-white" style="box-shadow: 0 4px 12px rgba(0,0,0,0.05);" onclick="window.location.href='monitoring.html'">
+       <button class="circle-btn bg-white" style="box-shadow: 0 4px 12px rgba(0,0,0,0.05);" onclick="window.location.href='index.html'">
           <i class="ph ph-arrow-u-up-left"></i>
        </button>
        <h1 style="margin: 0; font-size: 2.2rem; letter-spacing: -0.04em;">Settings</h1>
@@ -26,22 +26,22 @@
        <!-- Sidebar -->
        <div class="settings-sidebar card bg-white">
          <ul style="list-style: none; display: flex; flex-direction: column; gap: 8px;">
-           <li class="settings-nav-item active"><i class="ph ph-palette"></i> Appearance</li>
-           <li class="settings-nav-item"><i class="ph ph-user"></i> Account Profile</li>
-           <li class="settings-nav-item">
+           <li class="settings-nav-item active" id="nav-appearance" onclick="switchTab('appearance')" style="cursor: pointer;"><i class="ph ph-palette"></i> Appearance</li>
+           <li class="settings-nav-item" id="nav-account" onclick="switchTab('account')" style="cursor: pointer;"><i class="ph ph-user"></i> Account Profile</li>
+           <li class="settings-nav-item" id="nav-notifications" onclick="switchTab('notifications')" style="cursor: pointer;">
              <i class="ph ph-bell"></i> Notifications
              <div class="live-dot ml-auto"></div>
            </li>
-           <li class="settings-nav-item"><i class="ph ph-lock"></i> Security</li>
-           <li class="settings-nav-item"><i class="ph ph-users"></i> Team & Workspaces</li>
+
            <li style="height: 1px; background: var(--grey); margin: 12px 0;"></li>
            <li class="settings-nav-item" style="color: #ff3a3a; font-weight: 600;"><i class="ph ph-sign-out"></i> Log out</li>
          </ul>
        </div>
 
        <!-- Content Area -->
-       <div class="settings-content-area column" style="gap: 24px;">
+       <div class="settings-content-area column" style="position: relative;">
          
+         <div id="section-appearance" style="display: flex; flex-direction: column; gap: 24px;">
          <!-- Appearance Section -->
          <div class="card bg-white">
            <h2 style="margin-bottom: 8px;">Theme Preference</h2>
@@ -62,20 +62,184 @@
            <h2 style="margin-bottom: 24px;">Language & Region</h2>
            <div class="settings-row" style="display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 1px dashed var(--grey);">
              <span style="font-weight: 500; color: var(--text-secondary);">Display Language</span>
-             <div class="dropdown-pill outline bg-hover" style="color: var(--black); border: 1px solid var(--grey);">
-               English (US) <i class="ph ph-caret-down"></i>
-             </div>
+             <select class="dropdown-pill outline bg-hover" style="color: var(--black); border: 1px solid var(--grey); cursor: pointer;">
+               <option value="en-US">English (US)</option>
+               <option value="es-ES">Español (ES)</option>
+               <option value="fr-FR">Français (FR)</option>
+               <option value="de-DE">Deutsch (DE)</option>
+             </select>
            </div>
            <div class="settings-row" style="display: flex; justify-content: space-between; align-items: center; padding: 16px 0 0;">
              <span style="font-weight: 500; color: var(--text-secondary);">Time Zone</span>
-             <div class="dropdown-pill outline bg-hover" style="color: var(--black); border: 1px solid var(--grey);">
-               (UTC) Coordinates <i class="ph ph-caret-down"></i>
-             </div>
+             <select class="dropdown-pill outline bg-hover" style="color: var(--black); border: 1px solid var(--grey); cursor: pointer;">
+               <option value="UTC">(UTC) Coordinated Universal Time</option>
+               <option value="EST">(UTC-05:00) Eastern Time</option>
+               <option value="PST">(UTC-08:00) Pacific Time</option>
+               <option value="IST">(UTC+05:30) Indian Standard Time</option>
+             </select>
            </div>
          </div>
+         </div> <!-- end section-appearance -->
+
+         <!-- Account Profile Section -->
+         <div id="section-account" style="display: none; flex-direction: column; gap: 24px;">
+           <div class="card bg-white">
+             <h2 style="margin-bottom: 24px;">Public Profile</h2>
+             <div style="display: flex; gap: 24px; align-items: center; margin-bottom: 32px;">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150" alt="Avatar" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+                <div>
+                   <h3 style="margin: 0; font-size: 1.5rem;">Alesha Hyocinth</h3>
+                   <p style="color: var(--text-secondary); margin: 4px 0 0; font-weight: 500;">Project Manager</p>
+                </div>
+                <button class="pill-btn bg-lime text-black ml-auto" style="padding: 12px 24px; font-weight: 600;">Update Photo</button>
+             </div>
+
+             <h3 style="margin-top: 32px; margin-bottom: 16px; font-size: 1.2rem; border-top: 1px dashed var(--grey); padding-top: 24px;">Personal Information</h3>
+             
+             <div class="form-row">
+               <div class="form-group">
+                 <label>Full Name</label>
+                 <input type="text" class="form-input" value="Alesha Hyocinth" placeholder="Enter your name">
+               </div>
+               <div class="form-group">
+                 <label>Email Address</label>
+                 <input type="email" class="form-input" value="alesha.h@gtrack.com" placeholder="Email Address">
+               </div>
+             </div>
+
+             <div class="form-row">
+               <div class="form-group">
+                 <label>Mobile Number</label>
+                 <input type="tel" class="form-input" value="+1 (555) 019-2831" placeholder="Mobile Number">
+               </div>
+               <div class="form-group">
+                 <label>Gas Agency</label>
+                 <input type="text" class="form-input" value="BHARATH GAS" placeholder="Gas Agency Name">
+               </div>
+             </div>
+
+             <h3 style="margin-top: 16px; margin-bottom: 16px; font-size: 1.2rem; border-top: 1px dashed var(--grey); padding-top: 24px;">Address Details</h3>
+
+             <div class="form-group">
+               <label>Address Line</label>
+               <input type="text" class="form-input" value="123 Example Street, Apt 4B" placeholder="Full Address Line">
+             </div>
+
+             <div class="form-row">
+               <div class="form-group">
+                 <label>City</label>
+                 <input type="text" class="form-input" value="Metropolis" placeholder="City">
+               </div>
+               <div class="form-group">
+                 <label>District</label>
+                 <input type="text" class="form-input" value="Central District" placeholder="District">
+               </div>
+             </div>
+
+             <div class="form-row">
+               <div class="form-group">
+                 <label>State</label>
+                 <input type="text" class="form-input" value="New York" placeholder="State">
+               </div>
+               <div class="form-group">
+                 <label>PIN Code</label>
+                 <input type="text" class="form-input" value="10001" placeholder="PIN/ZIP">
+               </div>
+             </div>
+
+             <h3 style="margin-top: 16px; margin-bottom: 16px; font-size: 1.2rem; border-top: 1px dashed var(--grey); padding-top: 24px;">Security</h3>
+             
+             <div class="settings-row" style="display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 1px dashed var(--grey);">
+                <div>
+                   <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 4px;">Password</div>
+                   <div style="color: var(--text-secondary); font-size: 0.9rem;">Last changed 3 months ago</div>
+                </div>
+                <button class="pill-btn bg-grey text-black" style="padding: 8px 16px; font-weight: 600;">Change Password</button>
+             </div>
+
+             <div style="display: flex; justify-content: flex-end; margin-top: 32px;">
+                <button class="pill-btn bg-black text-white" style="padding: 14px 32px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: transform 0.2s;" onclick="this.style.transform='scale(0.95)'; setTimeout(()=>this.style.transform='', 150);">Save Changes</button>
+             </div>
+           </div>
+         </div> <!-- end section-account -->
+
+         <!-- Notifications Section -->
+         <div id="section-notifications" style="display: none; flex-direction: column; gap: 24px;">
+           <div class="card bg-white">
+             <h2 style="margin-bottom: 8px;">Alert Preferences</h2>
+             <p style="color: var(--text-secondary); margin-bottom: 32px;">Choose what events you want to be notified about.</p>
+
+             <div class="settings-row" style="display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 1px dashed var(--grey);">
+                <div>
+                   <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 4px;">Critical system alerts</div>
+                   <div style="color: var(--text-secondary); font-size: 0.9rem;">Receive urgent alerts like offline sensors or extreme levels.</div>
+                </div>
+                <div class="pill bg-lime text-black" style="padding: 8px 16px; font-weight: 600; cursor: pointer; transition: all 0.2s;" onclick="this.classList.toggle('bg-lime'); this.classList.toggle('bg-grey'); this.innerHTML = this.classList.contains('bg-lime') ? 'Enabled <i class=\'ph-bold ph-check\'></i>' : 'Disabled <i class=\'ph-bold ph-x\'></i>';">Enabled <i class="ph-bold ph-check"></i></div>
+             </div>
+
+             <div class="settings-row" style="display: flex; justify-content: space-between; align-items: center; padding: 16px 0; border-bottom: 1px dashed var(--grey);">
+                <div>
+                   <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 4px;">Weekly reports</div>
+                   <div style="color: var(--text-secondary); font-size: 0.9rem;">A summary of analytics sent to your email.</div>
+                </div>
+                <div class="pill bg-grey text-black" style="padding: 8px 16px; font-weight: 600; cursor: pointer; transition: all 0.2s;" onclick="this.classList.toggle('bg-grey'); this.classList.toggle('bg-lime'); this.innerHTML = this.classList.contains('bg-lime') ? 'Enabled <i class=\'ph-bold ph-check\'></i>' : 'Disabled <i class=\'ph-bold ph-x\'></i>';">Disabled <i class="ph-bold ph-x"></i></div>
+             </div>
+             
+             <div class="settings-row" style="display: flex; justify-content: space-between; align-items: center; padding: 16px 0;">
+                <div>
+                   <div style="font-weight: 600; font-size: 1.1rem; margin-bottom: 4px;">Device updates</div>
+                   <div style="color: var(--text-secondary); font-size: 0.9rem;">Firmware installation notices and sync logs.</div>
+                </div>
+                <div class="pill bg-lime text-black" style="padding: 8px 16px; font-weight: 600; cursor: pointer; transition: all 0.2s;" onclick="this.classList.toggle('bg-lime'); this.classList.toggle('bg-grey'); this.innerHTML = this.classList.contains('bg-lime') ? 'Enabled <i class=\'ph-bold ph-check\'></i>' : 'Disabled <i class=\'ph-bold ph-x\'></i>';">Enabled <i class="ph-bold ph-check"></i></div>
+             </div>
+           </div>
+         </div> <!-- end section-notifications -->
 
        </div>
     </div>
   </div>
 </body>
+<script>
+  function switchTab(tabId) {
+     // Reset nav items
+     document.querySelectorAll('.settings-nav-item').forEach(item => item.classList.remove('active'));
+     
+     // Hide all view sections
+     document.getElementById('section-appearance').style.display = 'none';
+     document.getElementById('section-account').style.display = 'none';
+     document.getElementById('section-notifications').style.display = 'none';
+
+     // Activate requested
+     const navItem = document.getElementById(`nav-${tabId}`);
+     if (navItem) navItem.classList.add('active');
+     
+     const section = document.getElementById(`section-${tabId}`);
+     if (section) {
+       section.style.display = 'flex';
+       
+       // Trigger subtle transition animation
+       section.style.opacity = '0';
+       section.style.transform = 'translateY(10px)';
+       section.style.transition = 'none';
+       
+       // small delay to allow DOM to apply block display before transitioning visually
+       setTimeout(() => {
+          section.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+          section.style.opacity = '1';
+          section.style.transform = 'translateY(0)';
+       }, 10);
+     }
+  }
+  
+  // Expose function globally if needed
+  window.switchTab = switchTab;
+
+  document.addEventListener('DOMContentLoaded', () => {
+     const urlParams = new URLSearchParams(window.location.search);
+     const tabToOpen = urlParams.get('tab');
+     if (tabToOpen) {
+        switchTab(tabToOpen);
+     }
+  });
+</script>
 </html>

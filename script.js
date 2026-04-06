@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
       showToast('Loading Real-Time Monitoring Dashboard...');
       setTimeout(() => {
         projectInfo.style.opacity = '1';
-        window.open('monitoring.html', '_blank');
+        window.location.href = 'monitoring.html';
       }, 500);
     });
   }
@@ -95,15 +95,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const gasWeightFill = document.getElementById('gas-weight-fill');
   
   if (gasWeightValue && gasWeightFill) {
-    let currentWeight = 139.0;
-    const maxCapacity = 200; // in kg
+    let currentWeight = 11.4;
+    const maxCapacity = 14; // in kg
     
     const updateRefillPrediction = (weight) => {
       const refillDayEl = document.getElementById('refill-day');
       const refillMonthEl = document.getElementById('refill-month-text');
       if (refillDayEl && refillMonthEl) {
          // Calculate predicted refill date based on usage history average (mocked to 5.2 kg/day)
-         const avgDailyUsage = 5.2; 
+         const avgDailyUsage = 0.8; 
          const daysRemaining = Math.max(0, weight / avgDailyUsage);
          
          const refillDate = new Date();
@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Update every 2 seconds
     setInterval(() => {
-      const change = (Math.random() * 2) - 0.8;
+      const change = (Math.random() * 0.2) - 0.1;
       currentWeight = Math.max(0, Math.min(maxCapacity, currentWeight + change));
       
       gasWeightValue.textContent = `${currentWeight.toFixed(1)} kg`;
@@ -290,5 +290,29 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
   });
+
+  // --- Yearly Trend Animation (Intersection Observer) ---
+  const trendBars = document.querySelectorAll('.trend-bar');
+  if (trendBars.length > 0) {
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          // Set height to data-target to trigger the CSS transition
+          const targetHeight = entry.target.getAttribute('data-target');
+          if (targetHeight) {
+            entry.target.style.height = targetHeight;
+          }
+          // Optionally unobserve after animating once
+          obs.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1 // Trigger when at least 10% of the bar is visible
+    });
+
+    trendBars.forEach(bar => {
+      observer.observe(bar);
+    });
+  }
 
 });

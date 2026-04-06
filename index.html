@@ -22,11 +22,11 @@
           <div class="cutout-curve-top"></div>
           <div class="cutout-curve-bottom"></div>
           <button class="circle-btn bg-white" onclick="window.location.href='settings.html'"><i class="ph ph-gear"></i></button>
-          <button class="circle-btn bg-white"><i class="ph ph-bell"></i></button>
-          <button class="circle-btn bg-white"><i class="ph ph-sliders"></i></button>
+          <button class="circle-btn bg-white" title="Notifications" onclick="window.location.href='settings.html?tab=notifications'"><i class="ph ph-bell"></i></button>
+          <button class="circle-btn bg-white" title="Complaints" onclick="window.location.href='complaints.html'"><i class="ph ph-shield-check"></i></button>
         </div>
         
-        <div class="user-info" style="margin-top: 24px;">
+        <div class="user-info" style="margin-top: 24px; cursor: pointer;" onclick="window.location.href='settings.html?tab=account'">
           <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150" alt="Alesha" class="avatar">
           <div class="user-text">
             <h4>Alesha Hyocinth</h4>
@@ -170,23 +170,25 @@
       <!-- Bottom Right Grid -->
       <div class="bottom-grid">
         
-        <!-- Refill Date Widget -->
-        <div class="card widget-date pb-0" id="refill-date-widget">
-          <div style="position: absolute; top: 16px; left: 0; width: 100%; text-align: center; font-size: 0.7rem; font-weight: 700; color: var(--text-primary); opacity: 0.6; text-transform: uppercase; letter-spacing: 0.05em;">Predicted Refill</div>
-          <div class="date-big" id="refill-day">--</div>
-          <div class="date-text" id="refill-month-text">
-            <strong>--</strong><br>--
-          </div>
+        <!-- Active Devices -->
+        <div class="card widget-daily-average bg-white text-black" style="padding: 24px; display: flex; flex-direction: column; justify-content: space-between;">
+           <div style="font-size: 0.85rem; font-weight: 600; text-transform: uppercase; color: var(--text-secondary); letter-spacing: 0.05em; display: flex; align-items: center; gap: 8px;">
+              <div class="live-dot pulse"></div> Active Devices
+           </div>
+           <div style="display: flex; align-items: baseline; gap: 8px; margin-top: auto; padding-top: 24px;">
+               <span style="font-size: 3.5rem; font-weight: 600; line-height: 1; letter-spacing: -0.04em;">1</span>
+               <span style="font-weight: 500; color: var(--text-secondary); font-size: 1.1rem;">Device</span>
+           </div>
         </div>
         
-        <!-- Total Project Time -->
-        <div class="card widget-total-time">
-          <div class="total-header">
-            <button class="icon-circle bg-white"><i class="ph ph-clock"></i></button>
-            <span>Total project<br>time</span>
+        <!-- Total Days Used -->
+        <div class="card widget-total-time bg-black text-white" style="padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px; border-radius: 12px;">
+          <div class="total-header" style="color: rgba(255,255,255,0.8); display: flex; align-items: center; gap: 12px; font-size: 0.95rem;">
+            <button class="icon-circle bg-white text-black" style="width: 40px; height: 40px; border-radius: 50%; border: none; display: flex; align-items: center; justify-content: center; font-size: 1.25rem;"><i class="ph-bold ph-calendar-check text-black"></i></button>
+            <span>Total days<br>in use</span>
           </div>
-          <div class="total-value">
-            645 <span>h</span>
+          <div class="total-value" style="font-size: 2.5rem; font-weight: 500; color: #fff;">
+            45 <span style="font-size: 1.25rem; opacity: 0.6;">Days</span>
           </div>
         </div>
         
@@ -216,15 +218,12 @@
           </div>
         </div>
         
-        <!-- AI Smart Assistant -->
-        <div class="card widget-ai">
-          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&q=80&w=300" alt="AI Agent" class="ai-bg">
-          <button class="circle-btn bg-lime absolute-top-left">
-            <i class="ph ph-arrow-up-right"></i>
-          </button>
-          <div class="ai-text">
-            <span>AI</span><br>
-            <strong>Smart<br>Assistant</strong>
+        <!-- Refill Date Widget (Calendar Style) -->
+        <div class="card bg-white pb-0" id="refill-date-widget" style="padding: 0; overflow: hidden; display: flex; flex-direction: column; justify-content: flex-start;">
+          <div class="bg-lime text-black" style="padding: 12px 0; text-align: center; font-weight: 600; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase;">Predicted Refill</div>
+          <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding-bottom: 24px;">
+             <div id="refill-day" class="text-black" style="font-size: 4.5rem; font-weight: 500; line-height: 1; letter-spacing: -0.05em; margin-top: 24px;">--</div>
+             <div id="refill-month-text" style="font-size: 1.1rem; color: var(--text-secondary); font-weight: 500; text-align: center; margin-top: 8px;"><strong>--</strong><br>--</div>
           </div>
         </div>
         

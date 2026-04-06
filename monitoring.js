@@ -45,8 +45,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const gasPercent = document.getElementById('gas-percent');
   
   if (gasWeightValue && gasWeightFill && gaugePointer && gasPercent) {
-    let currentWeight = 138.7;
-    const maxCapacity = 200; // in kg
+    let currentWeight = 11.2;
+    const maxCapacity = 14; // in kg
     const pathLength = 251.3;
     
     // Initial Setup
@@ -111,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Resume periodic updates
     setInterval(() => {
-      const change = (Math.random() * 4) - 2.0; 
+      const change = (Math.random() * 0.2) - 0.1;  
       currentWeight = Math.max(0, Math.min(maxCapacity, currentWeight + change));
       
       gasWeightFill.style.transition = 'stroke-dashoffset 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), stroke 0.6s ease';

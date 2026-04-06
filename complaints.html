@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G-TRACK - Complaints & Support</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Phosphor Icons -->
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <script src="theme.js"></script>
+</head>
+<body class="monitoring-page">
+  <div class="app-layout">
+    <!-- Sidebar -->
+    <aside class="app-sidebar bg-white">
+      <div class="sidebar-logo" style="cursor: pointer;" onclick="window.location.href='index.html'">
+         <div class="icon-circle bg-lime text-black" style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
+            <i class="ph-fill ph-fire"></i>
+         </div>
+         <div class="logo-text">
+            <h2>G-TRACK</h2>
+            <span>SMART MONITORING</span>
+         </div>
+      </div>
+
+      <nav class="sidebar-nav">
+         <a href="monitoring.html" class="nav-item"><i class="ph-fill ph-squares-four"></i> Dashboard</a>
+         <a href="report.html" class="nav-item"><i class="ph ph-chart-bar"></i> Reports</a>
+         <a href="refill-history.html" class="nav-item"><i class="ph ph-clock-counter-clockwise"></i> Refill History</a>
+         <a href="complaints.html" class="nav-item active bg-lime"><i class="ph ph-warning-circle"></i> Complaints</a>
+         <a href="settings.html" class="nav-item"><i class="ph ph-gear"></i> Settings</a>
+      </nav>
+
+      <div class="sidebar-bottom">
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="app-main">
+      <header class="main-header" style="margin-bottom: 24px;">
+         <h1 style="font-size: 2rem;">Complaints & Support</h1>
+      </header>
+      
+      <div class="complaints-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+         <!-- Submit a Complaint -->
+         <div class="card bg-white" style="padding: 32px">
+            <h2 style="margin-bottom: 24px;">Submit a Ticket</h2>
+            <form id="complaint-form" style="display: flex; flex-direction: column; gap: 16px;">
+               <div class="form-group" style="display: flex; flex-direction: column; gap: 8px;">
+                  <label style="font-weight: 500;">Subject</label>
+                  <input type="text" class="form-input" placeholder="e.g. Broken flow meter on D001" style="padding: 12px; border: 1px solid var(--grey); border-radius: 8px; background: transparent; color: var(--black);">
+               </div>
+               
+               <div class="form-group" style="display: flex; flex-direction: column; gap: 8px;">
+                  <label style="font-weight: 500;">Device ID (Optional)</label>
+                  <input type="text" class="form-input" placeholder="e.g. D001" style="padding: 12px; border: 1px solid var(--grey); border-radius: 8px; background: transparent; color: var(--black);">
+               </div>
+
+               <div class="form-group" style="display: flex; flex-direction: column; gap: 8px;">
+                  <label style="font-weight: 500;">Description</label>
+                  <textarea class="form-input" rows="5" placeholder="Describe your issue in detail..." style="padding: 12px; border: 1px solid var(--grey); border-radius: 8px; resize: vertical; background: transparent; color: var(--black);"></textarea>
+               </div>
+               
+               <button type="button" class="pill-btn bg-black text-white" style="align-self: flex-start; padding: 12px 24px; font-weight: 600; margin-top: 8px; border: none; cursor: pointer; border-radius: 100px;">Submit Ticket</button>
+            </form>
+         </div>
+
+         <!-- Previous Tickets -->
+         <div class="card bg-white" style="padding: 32px">
+            <h2 style="margin-bottom: 24px;">Previous Tickets</h2>
+            <div class="ticket-list" style="display: flex; flex-direction: column; gap: 16px;">
+               
+               <!-- Ticket 1 -->
+               <div class="ticket-item" style="border: 1px solid var(--grey); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px;">
+                  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                     <div style="font-weight: 600; font-size: 1.1rem; color: var(--black);">Connectivity issue with D005</div>
+                     <span class="pill bg-lime text-black" style="font-size: 0.8rem; font-weight: 600; padding: 4px 12px; border-radius: 100px;">Resolved</span>
+                  </div>
+                  <div style="color: var(--text-secondary); font-size: 0.9rem;">Filed on: 2026-03-28</div>
+                  <div style="font-size: 0.95rem; color: var(--black);">The device drops connection multiple times an hour.</div>
+               </div>
+
+               <!-- Ticket 2 -->
+               <div class="ticket-item" style="border: 1px solid var(--grey); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px;">
+                  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                     <div style="font-weight: 600; font-size: 1.1rem; color: var(--black);">Incorrect gas reading</div>
+                     <span class="pill text-white" style="background: #FBBF24; font-size: 0.8rem; font-weight: 600; padding: 4px 12px; border-radius: 100px;">In Progress</span>
+                  </div>
+                  <div style="color: var(--text-secondary); font-size: 0.9rem;">Filed on: 2026-04-02</div>
+                  <div style="font-size: 0.95rem; color: var(--black);">Showing 14% remaining when physical tank is completely empty.</div>
+               </div>
+               
+               <!-- Ticket 3 -->
+               <div class="ticket-item" style="border: 1px solid var(--grey); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 8px;">
+                  <div style="display: flex; justify-content: space-between; align-items: flex-start;">
+                     <div style="font-weight: 600; font-size: 1.1rem; color: var(--black);">Dashboard missing charts</div>
+                     <span class="pill bg-grey text-black" style="font-size: 0.8rem; font-weight: 600; padding: 4px 12px; border-radius: 100px;">Open</span>
+                  </div>
+                  <div style="color: var(--text-secondary); font-size: 0.9rem;">Filed on: 2026-04-05</div>
+                  <div style="font-size: 0.95rem; color: var(--black);">Unable to see weekly trends on main monitoring page.</div>
+               </div>
+
+            </div>
+         </div>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

@@ -373,9 +373,8 @@ p { color: var(--text-secondary); font-size: 0.95rem; }
 }
 
 .bar-future {
-  background-color: var(--text-secondary);
-  opacity: 0.3;
-  border-radius: 4px;
+  background-color: transparent;
+  opacity: 1;
 }
 
 .future-col {
@@ -1053,14 +1052,48 @@ body.monitoring-page {
   box-shadow: 0 4px 12px rgba(0,0,0,0.02);
 }
 .search-bar input {
+  flex: 1;
   border: none;
   background: transparent;
   outline: none;
   font-family: inherit;
-  font-size: 0.95rem;
-  width: 100%;
+  font-size: 1rem;
 }
 .search-bar input::placeholder { color: #a0a0a0; }
+
+/* General Form Inputs */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+.form-input {
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--grey);
+  background: transparent;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  width: 100%;
+}
+.form-input:focus {
+  border-color: var(--black);
+  outline: none;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
 
 .monitoring-grid {
   display: grid;

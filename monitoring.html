@@ -16,7 +16,7 @@
     <aside class="app-sidebar bg-white">
       <div class="sidebar-logo" style="cursor: pointer;" onclick="window.location.href='index.html'">
          <div class="icon-circle bg-lime text-black" style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
-            <i class="ph-fill ph-briefcase"></i>
+            <i class="ph-fill ph-fire"></i>
          </div>
          <div class="logo-text">
             <h2>G-TRACK</h2>
@@ -27,9 +27,8 @@
       <nav class="sidebar-nav">
          <a href="#" class="nav-item active bg-lime"><i class="ph-fill ph-squares-four"></i> Dashboard</a>
          <a href="report.html" class="nav-item"><i class="ph ph-chart-bar"></i> Reports</a>
-         <a href="#" class="nav-item"><i class="ph ph-hard-drives"></i> Devices</a>
-         <a href="#" class="nav-item"><i class="ph ph-chart-line-up"></i> Analytics</a>
-         <a href="#" class="nav-item"><i class="ph ph-shield-check"></i> Compliance</a>
+         <a href="refill-history.html" class="nav-item"><i class="ph ph-clock-counter-clockwise"></i> Refill History</a>
+         <a href="complaints.html" class="nav-item"><i class="ph ph-warning-circle"></i> Complaints</a>
          <a href="settings.html" class="nav-item"><i class="ph ph-gear"></i> Settings</a>
       </nav>
 
@@ -69,9 +68,7 @@
                      <i class="ph ph-arrow-up-right" style="font-size: 1.1rem; font-weight: 600;"></i>
                    </button>
                  </div>
-                 <div style="font-size: 1.15rem; color: rgba(0,0,0,0.6); font-weight: 500;">
-                   Avg weight: 125.0 kg
-                 </div>
+
               </div>
 
               <!-- Right Side Gauge -->
@@ -100,41 +97,43 @@
             </div>
 
             <!-- 2. Consumption Trends -->
-            <div class="card bg-white" style="min-height: 280px; display: flex; flex-direction: column; border-radius: 40px; padding: 32px 40px;">
+            <div class="card bg-black text-white" style="min-height: 280px; display: flex; flex-direction: column; border-radius: 40px; padding: 32px 40px;">
                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
                   <h3 style="font-weight: 600;">Consumption Trends</h3>
                   <div class="pill-group" style="display: flex; gap: 8px;">
-                     <button class="pill active bg-grey" style="border: none; padding: 8px 20px; border-radius: 100px; font-weight: 500; color: var(--black); cursor: pointer;">Weekly</button>
-                     <button class="pill" style="border: none; background: transparent; padding: 8px 20px; font-weight: 500; color: var(--text-secondary); cursor: pointer;">Monthly</button>
+                     <button class="pill active bg-white" style="border: none; padding: 8px 20px; border-radius: 100px; font-weight: 600; color: var(--black); cursor: pointer;">Weekly</button>
+                     <button class="pill" style="border: none; background: transparent; padding: 8px 20px; font-weight: 500; color: rgba(255,255,255,0.6); cursor: pointer;">Monthly</button>
                   </div>
                </div>
                
                <div class="trend-chart" style="flex: 1; display: flex; align-items: flex-end; justify-content: space-between; padding-top: 24px; position: relative;">
-                  <div class="trend-col"><div class="trend-bar" style="height: 40%;"></div><span>Mon</span></div>
-                  <div class="trend-col"><div class="trend-bar" style="height: 30%;"></div><span>Tue</span></div>
-                  <div class="trend-col"><div class="trend-bar" style="height: 45%;"></div><span>Wed</span></div>
-                  <div class="trend-col"><div class="trend-bar active bg-black" style="height: 70%;"></div><span class="text-black font-medium">Thu</span></div>
-                  <div class="trend-col"><div class="trend-bar" style="height: 50%;"></div><span>Fri</span></div>
-                  <div class="trend-col"><div class="trend-bar" style="height: 20%;"></div><span>Sat</span></div>
-                  <div class="trend-col"><div class="trend-bar" style="height: 35%;"></div><span>Sun</span></div>
+                  <div class="trend-col"><div class="trend-bar bg-white" style="height: 40%; opacity: 0.4;"></div><span style="color: rgba(255,255,255,0.6);">Mon</span></div>
+                  <div class="trend-col"><div class="trend-bar bg-white" style="height: 30%; opacity: 0.4;"></div><span style="color: rgba(255,255,255,0.6);">Tue</span></div>
+                  <div class="trend-col"><div class="trend-bar bg-white" style="height: 45%; opacity: 0.4;"></div><span style="color: rgba(255,255,255,0.6);">Wed</span></div>
+                  <div class="trend-col"><div class="trend-bar active bg-lime" style="height: 70%; box-shadow: 0 0 16px rgba(212,255,58,0.4);"></div><span class="text-white font-medium">Thu</span></div>
+                  <div class="trend-col"><div class="trend-bar bg-white" style="height: 50%; opacity: 0.4;"></div><span style="color: rgba(255,255,255,0.6);">Fri</span></div>
+                  <div class="trend-col"><div class="trend-bar bg-white" style="height: 20%; opacity: 0.4;"></div><span style="color: rgba(255,255,255,0.6);">Sat</span></div>
+                  <div class="trend-col"><div class="trend-bar bg-white" style="height: 35%; opacity: 0.4;"></div><span style="color: rgba(255,255,255,0.6);">Sun</span></div>
                </div>
             </div>
+
+
          </div>
 
          <!-- Right Column -->
          <div class="col-right column" style="gap: 24px;">
-            <!-- Device Status -->
-            <div class="card bg-black text-white" style="border-radius: 100px; padding: 16px 32px; display: flex; align-items: center; gap: 16px;">
-               <div class="icon-circle" style="width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #222;">
-                  <i class="ph-fill ph-wifi-high text-lime" style="font-size: 1.5rem;"></i>
+            <!-- Book Refill Card (moved and styled to match) -->
+            <div class="card bg-black text-white" style="border-radius: 100px; padding: 16px 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+               <div style="display: flex; align-items: center; gap: 16px;">
+                 <div class="icon-circle" style="width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: #222;">
+                    <i class="ph-fill ph-gas-pump text-lime" style="font-size: 1.5rem;"></i>
+                 </div>
+                 <div>
+                    <div style="font-size: 0.8rem; color: rgba(255,255,255,0.7); letter-spacing: 0.05em; margin-bottom: 2px; font-weight: 600;">CYLINDER BOOKING</div>
+                    <div style="font-size: 1.25rem; font-weight: 600;">Book Refill</div>
+                 </div>
                </div>
-               <div style="flex: 1;">
-                  <div style="font-size: 0.8rem; color: rgba(255,255,255,0.7); letter-spacing: 0.05em; margin-bottom: 2px; font-weight: 600;">DEVICE STATUS</div>
-                  <div style="font-size: 1.25rem; font-weight: 600;">Online</div>
-               </div>
-               <div class="pill text-lime" style="background: rgba(212, 255, 58, 0.1); padding: 6px 16px; border-radius: 100px; display: flex; align-items: center; font-weight: 500;">
-                  <div class="live-dot pulse" style="background: var(--lime); width: 8px; height: 8px; margin-right: 8px;"></div> Active
-               </div>
+               <button class="pill-btn bg-lime text-black" style="padding: 8px 24px; font-weight: 600; font-size: 0.9rem;" onclick="window.location.href='book-refill.html'">Book Now</button>
             </div>
 
             <!-- Days Remaining -->
@@ -157,6 +156,18 @@
                   <div style="font-size: 2.2rem; font-weight: 600; line-height: 1;">15%</div>
                </div>
                <button class="pill-btn bg-grey text-black" style="padding: 12px 28px; font-weight: 600; font-size: 0.95rem;">Modify</button>
+            </div>
+
+            <!-- Consumption Rating -->
+            <div class="card bg-white" style="border-radius: 40px; padding: 24px 32px; display: flex; align-items: center; justify-content: space-between;">
+               <div>
+                  <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-secondary); letter-spacing: 0.05em; margin-bottom: 4px;">CONSUMPTION RATING</div>
+                  <div style="font-size: 2.2rem; font-weight: 600; line-height: 1;">Normal</div>
+               </div>
+               <div class="pill bg-grey text-black" style="padding: 10px 20px; border-radius: 100px; font-weight: 600; font-size: 0.95rem; display: flex; align-items: center; gap: 8px;">
+                  <div style="width: 10px; height: 10px; border-radius: 50%; background: var(--lime);"></div>
+                  Stable
+               </div>
             </div>
 
             <!-- Activity List -->

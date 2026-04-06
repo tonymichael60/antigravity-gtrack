@@ -73,8 +73,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const gaugePointer = document.getElementById('gauge-pointer');
   
   if (gasWeightValue && gasWeightFill && gaugePointer) {
-    let currentWeight = 139.0;
-    const maxCapacity = 200; // in kg
+    let currentWeight = 11.4;
+    const maxCapacity = 14; // in kg
     const pathLength = 251.3;
     
     // Initial Setup
@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Resume random interval variations with normal transition speed
     setInterval(() => {
-      const change = (Math.random() * 4) - 2.0; 
+      const change = (Math.random() * 0.2) - 0.1; 
       currentWeight = Math.max(0, Math.min(maxCapacity, currentWeight + change));
       
       // Keep standard update speed for tick variations

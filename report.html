@@ -15,7 +15,7 @@
     <aside class="app-sidebar bg-white">
       <div class="sidebar-logo" style="cursor: pointer;" onclick="window.location.href='index.html'">
          <div class="icon-circle bg-lime text-black" style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">
-            <i class="ph-fill ph-briefcase"></i>
+            <i class="ph-fill ph-fire"></i>
          </div>
          <div class="logo-text">
             <h2>G-TRACK</h2>
@@ -26,9 +26,8 @@
       <nav class="sidebar-nav">
          <a href="monitoring.html" class="nav-item"><i class="ph-fill ph-squares-four"></i> Dashboard</a>
          <a href="#" class="nav-item active bg-lime"><i class="ph ph-chart-bar"></i> Reports</a>
-         <a href="#" class="nav-item"><i class="ph ph-hard-drives"></i> Devices</a>
-         <a href="#" class="nav-item"><i class="ph ph-chart-line-up"></i> Analytics</a>
-         <a href="#" class="nav-item"><i class="ph ph-shield-check"></i> Compliance</a>
+         <a href="refill-history.html" class="nav-item"><i class="ph ph-clock-counter-clockwise"></i> Refill History</a>
+         <a href="complaints.html" class="nav-item"><i class="ph ph-warning-circle"></i> Complaints</a>
          <a href="settings.html" class="nav-item"><i class="ph ph-gear"></i> Settings</a>
       </nav>
 
@@ -49,15 +48,15 @@
          <div class="report-stats">
             <div class="stat-item">
                <span class="stat-label">TOTAL DELIVERIES</span>
-               <span class="stat-value">450</span>
+               <span class="stat-value">12</span>
             </div>
             <div class="stat-item">
                <span class="stat-label">ACTIVE SENSORS</span>
-               <span class="stat-value">15</span>
+               <span class="stat-value">1</span>
             </div>
             <div class="stat-item">
-               <span class="stat-label">MONTHLY INCOME</span>
-               <span class="stat-value">$12.5k</span>
+               <span class="stat-label">TOTAL GAS USAGE</span>
+               <span class="stat-value">1,250 kg</span>
             </div>
          </div>
 
@@ -269,10 +268,10 @@
             </div>
          </div>
 
-         <!-- Active Fleet Status Table Card -->
+         <!-- Active Sensor Status Table Card -->
          <div class="status-table-card">
             <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px;">
-               <h3 class="section-title" style="margin-bottom: 0;">Active Fleet Status</h3>
+               <h3 class="section-title" style="margin-bottom: 0;">Active Sensor Status</h3>
                <span style="font-size: 0.85rem; font-weight: 600; cursor: pointer;">Explore all</span>
             </div>
 
@@ -296,24 +295,79 @@
                      <td><div style="display: flex; align-items: center; gap: 8px;"><i class="ph-bold ph-clock"></i> 14 mins</div></td>
                      <td><button class="pill-btn bg-lime text-black" style="padding: 6px 16px; font-size: 0.8rem;">Details</button></td>
                   </tr>
-                  <tr>
-                     <td><strong>№2</strong></td>
-                     <td><div class="radial-sm" style="border-right-color: #ff4d00; border-top-color: #ff4d00;">78%</div></td>
-                     <td><div style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-drop" style="opacity: 0.5;"></i> 45%</div></td>
-                     <td><div style="display: flex; align-items: center; gap: 8px;"><i class="ph-bold ph-wifi-high"></i> Strong</div></td>
-                     <td><div style="display: flex; align-items: center; gap: 8px;"><i class="ph-bold ph-clock"></i> 22 mins</div></td>
-                     <td><button class="pill-btn bg-lime text-black" style="padding: 6px 16px; font-size: 0.8rem;">Details</button></td>
-                  </tr>
-                  <tr>
-                     <td><strong>№3</strong></td>
-                     <td><div class="radial-sm" style="border-right-color: var(--lime); border-top-color: var(--lime);">92%</div></td>
-                     <td><div style="display: flex; align-items: center; gap: 8px;"><i class="ph-fill ph-drop"></i> 90%</div></td>
-                     <td><div style="display: flex; align-items: center; gap: 8px;"><i class="ph-bold ph-wifi-low"></i> Weak</div></td>
-                     <td><div style="display: flex; align-items: center; gap: 8px;"><i class="ph-bold ph-clock"></i> 45 mins</div></td>
-                     <td><button class="pill-btn bg-grey text-black" style="padding: 6px 16px; font-size: 0.8rem;">Details</button></td>
-                  </tr>
                </tbody>
             </table>
+         </div>
+
+         <!-- Yearly Gas Usage Trend Card -->
+         <div class="usage-trend-card card text-primary" style="grid-column: 1 / span 3; padding: 32px; display: flex; flex-direction: column;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 24px;">
+               <h3 class="section-title" style="margin-bottom: 0;">Yearly Gas Usage Trend</h3>
+               <span style="font-size: 0.85rem; font-weight: 600; color: var(--text-secondary);">2026</span>
+            </div>
+            
+            <div class="trend-chart-container" id="yearly-trend-chart" style="display: flex; justify-content: space-between; align-items: flex-end; height: 220px; width: 100%; border-bottom: 1px dashed rgba(0,0,0,0.1); padding-bottom: 8px; position: relative;">
+               <!-- Y Axis placeholders -->
+               <div style="position: absolute; left: 0; bottom: 8px; top: 0; display: flex; flex-direction: column; justify-content: space-between; align-items: flex-start; color: var(--text-secondary); font-size: 0.75rem; pointer-events: none; z-index: 0;">
+                  <span>100%</span>
+                  <span>50%</span>
+                  <span>0%</span>
+               </div>
+               
+               <!-- Horizontal Grid Lines -->
+               <div style="position: absolute; left: 30px; right: 0; top: 0; height: 1px; border-top: 1px dashed rgba(0,0,0,0.05); z-index: 0;"></div>
+               <div style="position: absolute; left: 30px; right: 0; top: 50%; height: 1px; border-top: 1px dashed rgba(0,0,0,0.05); z-index: 0;"></div>
+
+               <!-- Month Columns -->
+               <div class="trend-month-col" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; gap: 8px; flex: 1; z-index: 1;">
+                  <div class="trend-bar bg-lime" style="width: 32px; border-radius: 6px 6px 0 0; height: 0%; transition: height 1s cubic-bezier(0.175, 0.885, 0.32, 1.275); cursor: pointer;" data-target="45%" title="Jan: 45%"></div>
+                  <span style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 500;">Jan</span>
+               </div>
+               <div class="trend-month-col" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; gap: 8px; flex: 1; z-index: 1;">
+                  <div class="trend-bar bg-lime" style="width: 32px; border-radius: 6px 6px 0 0; height: 0%; transition: height 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.05s; cursor: pointer;" data-target="60%" title="Feb: 60%"></div>
+                  <span style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 500;">Feb</span>
+               </div>
+               <div class="trend-month-col" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; gap: 8px; flex: 1; z-index: 1;">
+                  <div class="trend-bar bg-lime" style="width: 32px; border-radius: 6px 6px 0 0; height: 0%; transition: height 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.1s; cursor: pointer;" data-target="55%" title="Mar: 55%"></div>
+                  <span style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 500;">Mar</span>
+               </div>
+               <div class="trend-month-col" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; gap: 8px; flex: 1; z-index: 1;">
+                  <div class="trend-bar bg-lime" style="width: 32px; border-radius: 6px 6px 0 0; height: 0%; transition: height 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.15s; cursor: pointer;" data-target="80%" title="Apr: 80%"></div>
+                  <span style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 500;">Apr</span>
+               </div>
+               <div class="trend-month-col" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; gap: 8px; flex: 1; z-index: 1;">
+                  <div class="trend-bar bg-lime" style="width: 32px; border-radius: 6px 6px 0 0; height: 0%; transition: height 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s; cursor: pointer;" data-target="95%" title="May: 95%"></div>
+                  <span style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 500;">May</span>
+               </div>
+               <div class="trend-month-col" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; gap: 8px; flex: 1; z-index: 1;">
+                  <div class="trend-bar bg-lime" style="width: 32px; border-radius: 6px 6px 0 0; height: 0%; transition: height 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.25s; cursor: pointer;" data-target="70%" title="Jun: 70%"></div>
+                  <span style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 500;">Jun</span>
+               </div>
+               <div class="trend-month-col" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; gap: 8px; flex: 1; z-index: 1;">
+                  <div class="trend-bar bg-lime" style="width: 32px; border-radius: 6px 6px 0 0; height: 0%; transition: height 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s; cursor: pointer;" data-target="40%" title="Jul: 40%"></div>
+                  <span style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 500;">Jul</span>
+               </div>
+               <div class="trend-month-col" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; gap: 8px; flex: 1; z-index: 1;">
+                  <div class="trend-bar bg-lime" style="width: 32px; border-radius: 6px 6px 0 0; height: 0%; transition: height 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.35s; cursor: pointer;" data-target="30%" title="Aug: 30%"></div>
+                  <span style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 500;">Aug</span>
+               </div>
+               <div class="trend-month-col" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; gap: 8px; flex: 1; z-index: 1;">
+                  <div class="trend-bar bg-lime" style="width: 32px; border-radius: 6px 6px 0 0; height: 0%; transition: height 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.4s; cursor: pointer;" data-target="50%" title="Sep: 50%"></div>
+                  <span style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 500;">Sep</span>
+               </div>
+               <div class="trend-month-col" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; gap: 8px; flex: 1; z-index: 1;">
+                  <div class="trend-bar bg-lime" style="width: 32px; border-radius: 6px 6px 0 0; height: 0%; transition: height 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.45s; cursor: pointer;" data-target="85%" title="Oct: 85%"></div>
+                  <span style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 500;">Oct</span>
+               </div>
+               <div class="trend-month-col" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; gap: 8px; flex: 1; z-index: 1;">
+                  <div class="trend-bar bg-lime" style="width: 32px; border-radius: 6px 6px 0 0; height: 0%; transition: height 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s; cursor: pointer;" data-target="65%" title="Nov: 65%"></div>
+                  <span style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 500;">Nov</span>
+               </div>
+               <div class="trend-month-col" style="display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; gap: 8px; flex: 1; z-index: 1;">
+                  <div class="trend-bar bg-lime" style="width: 32px; border-radius: 6px 6px 0 0; height: 0%; transition: height 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.55s; cursor: pointer;" data-target="90%" title="Dec: 90%"></div>
+                  <span style="font-size: 0.85rem; color: var(--text-secondary); font-weight: 500;">Dec</span>
+               </div>
+            </div>
          </div>
 
       </div>
